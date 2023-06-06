@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  too-doo:
+    build: .
+    environment:
+      - NODE_ENV=First
+    ports:
+      - "5000:3000"
+    container_name: too-doo
+    networks:
+      - backbone
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+    ports:
+      - "80:80"
+    networks:
+      - backbone
+
+networks:
+  backbone:
+    driver: bridge
