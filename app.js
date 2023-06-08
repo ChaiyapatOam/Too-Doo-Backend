@@ -19,7 +19,10 @@ app.use(cors());
 const taskRoute = require("./routes/task.route");
 
 //Use Route
-app.use("/tasks", taskRoute);
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
+app.use("/", taskRoute);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
